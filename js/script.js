@@ -13,7 +13,7 @@ var quotes = [
     "year": 2014
   },
   {
-    quote: "Mindfulness is simply the art of deliberately doing on ething at a time.",
+    quote: "Mindfulness is simply the art of deliberately doing one thing at a time.",
     "source": "Chris Baily",
     "citation": "The Productivity Project",
     "year": 2016
