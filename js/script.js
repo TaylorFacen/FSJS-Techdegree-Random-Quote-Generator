@@ -31,7 +31,7 @@ var quotes = [
     "year": 2013
   },
   {
-    quote: "Everyone on earth was carrying around an unseen history, and that alone deserves some tolerance.",
+    quote: "Everyone on earth carries around an unseen history, and that alone deserves some tolerance.",
     "source": "Michelle Obama",
     "citation": "Becoming",
     "year": 2018
