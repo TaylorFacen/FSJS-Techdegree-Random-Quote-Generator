@@ -38,17 +38,16 @@ var quotes = [
   }
 ]
 
+function getRandomNumber(ceiling) {
+  var randomNumber = Math.floor(Math.random() * ceiling)
+  return randomNumber
+}
 
-
-
-/***
-  Create the `getRandomQuote` function to:
-   - Create a variable to store a random number 
-   - Cse the random number to `return` a random quote object from the `quotes` array.
-***/
-
-
-
+function getRandomQuote(quotes) {
+  var index = getRandomNumber(quotes.length)
+  var quote = quotes[index]
+  return quote
+}
 
 /***
   Create the `printQuote` function to: 
