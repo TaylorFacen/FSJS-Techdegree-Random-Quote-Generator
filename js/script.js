@@ -10,33 +10,44 @@ var quotes = [
     quote: "While we may not always have control over our options, we always have control over how we choose among them.",
     "source": "Greg McKeown",
     "citation": "Essentialism",
-    "year": 2014
+    "year": 2014,
+    "tags": ["wisdom", "book"]
   },
   {
     quote: "Mindfulness is simply the art of deliberately doing one thing at a time.",
     "source": "Chris Baily",
     "citation": "The Productivity Project",
-    "year": 2016
+    "year": 2016,
+    "tags": ["wisdom", "book"]
   },
   {
     quote: "We must have faith in God's timing, especially when it's scary. We must have faith in the process.",
     "source": "Valeisha Butterfield Jones",
     "citation": "The Girlprint",
-    "year": 2014
+    "year": 2014,
+    "tags": ["wisdom", "blackWoman", "book"]
   },
   {
     quote: "Our thoughts become our words, out words become our beliefs, our beliefs become our actions, our actions become our habits, and our habits beccome our realities.",
     "source": "Jen Sincero",
     "citation": "You are a Badass",
-    "year": 2013
+    "year": 2013,
+    "tags": ["wisdom", "book"]
   },
   {
     quote: "Everyone on earth carries around an unseen history, and that alone deserves some tolerance.",
     "source": "Michelle Obama",
     "citation": "Becoming",
-    "year": 2018
+    "year": 2018,
+    "tags": ["wisdom", "blackWoman", "book"]
   }
 ]
+
+var tagsMapping = {
+  "wisdom": "🤔",
+  "blackWoman": "👩🏽",
+  "book": "📚" 
+}
 
 function getRandomNumber(ceiling) {
   var randomNumber = Math.floor(Math.random() * ceiling)
@@ -66,6 +77,14 @@ function printQuote() {
   }
 
   message += "</p>";
+
+  if (randomQuote.tags.length > 0) {
+    var tagsHTML = "<p>Tags: ";
+    for (var i = 0; i < randomQuote.tags.length; i++) {
+      tagsHTML += tagsMapping[randomQuote.tags[i]] + " "
+    }
+    message += tagsHTML + "</p>"
+  }
 
   document.getElementById("quote-box").innerHTML = message;
 }
