@@ -107,6 +107,7 @@ function printQuote() {
 
   var newBackgroundColor = getRandomColor(colors);
   document.body.style.backgroundColor = newBackgroundColor;
+  document.getElementById('loadQuote').style.background = newBackgroundColor;
 
 }
 
