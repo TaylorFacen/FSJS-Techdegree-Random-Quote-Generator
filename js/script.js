@@ -5,6 +5,11 @@ project 1 - A Random Quote Generator
 
 // Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
 
+// Flag for loop
+var inLoop = true
+var loopInterval = null;
+var buttons = document.getElementsByClassName('button');
+
 var quotes = [
   {
     quote: "While we may not always have control over our options, we always have control over how we choose among them.",
@@ -105,11 +110,39 @@ function printQuote() {
 
   document.getElementById("quote-box").innerHTML = message;
 
+  // Change background color of page and buttons
   var newBackgroundColor = getRandomColor(colors);
-  document.body.style.backgroundColor = newBackgroundColor;
-  document.getElementById('loadQuote').style.background = newBackgroundColor;
 
+  document.body.style.backgroundColor = newBackgroundColor;
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].style.background = newBackgroundColor;
+  }
+
+}
+
+// Function from: https://stackoverflow.com/questions/10935026/how-to-clear-interval-and-set-it-again
+
+function manageLoop() {
+  if (inLoop) {
+    loopInterval = setInterval(printQuote, 20000)
+  } else {
+    clearInterval(loopInterval);
+  }
+}
+
+function switchLoopInterval() {
+  var startStopButton = document.getElementById('startStopLoop');
+  inLoop = !inLoop;
+  if (inLoop) {
+    startStopButton.innerText = "Pause"
+  } else {
+    startStopButton.innerText = "Start"
+  }
+  manageLoop()
 }
 
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('startStopLoop').addEventListener("click", switchLoopInterval, false);
+manageLoop()

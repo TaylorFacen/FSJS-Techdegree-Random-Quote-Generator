@@ -71,25 +71,31 @@ body {
   font-style: normal;
 }
 
-#loadQuote {
-  position: fixed;
-  width: 12em;
+#buttons {
   display: inline-block;
-  left: 50%;
-  margin-left: -6em;
+  position: fixed;
   bottom: 150px;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+}
+
+.button {
+  background-color: #36b55c;
+  color: #fff;
   border-radius: 4px;
   border: 2px solid #fff;
-  color: #fff;
-  background-color: #36b55c;
   padding: 15px 0;
-  transition: .5s ;
+  width: 12em;
+  display: inline-block;
+  margin: 20px;
 }
-#loadQuote:hover {
+
+.button:hover {
   background-color: rgba(255,255,255,.25);
 }
 
-#loadQuote:focus {
+.button:focus {
   outline: none;
 }
 
