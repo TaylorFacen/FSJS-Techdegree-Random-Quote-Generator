@@ -84,6 +84,12 @@ function getRandomColor(colors) {
 
 function printQuote() {
   var randomQuote = getRandomQuote(quotes);
+
+  // Make sure the new quote isn't the same as the old quote
+  var currentQuote = document.getElementsByClassName('quote')[0]
+  while (randomQuote.quote.innerText === currentQuote) {
+    randomQuote = getRandomQuote(quotes);
+  }
   var message = "";
 
   // build HTML
