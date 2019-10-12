@@ -49,15 +49,32 @@ var tagsMapping = {
   "book": "📚" 
 }
 
+var colors = [
+  "#50514f",
+  "#11091e",
+  "#9777ff",
+  "#edc9d5"
+]
+
 function getRandomNumber(ceiling) {
   var randomNumber = Math.floor(Math.random() * ceiling)
   return randomNumber
 }
 
+function getRandomItem(array) {
+  var index = getRandomNumber(array.length);
+  var item = array[index];
+  return item
+}
+
 function getRandomQuote(quotes) {
-  var index = getRandomNumber(quotes.length)
-  var quote = quotes[index]
+  var quote = getRandomItem(quotes)
   return quote
+}
+
+function getRandomColor(colors) {
+  var color = getRandomItem(colors)
+  return color
 }
 
 function printQuote() {
@@ -87,6 +104,10 @@ function printQuote() {
   }
 
   document.getElementById("quote-box").innerHTML = message;
+
+  var newBackgroundColor = getRandomColor(colors);
+  document.body.style.backgroundColor = newBackgroundColor;
+
 }
 
 
