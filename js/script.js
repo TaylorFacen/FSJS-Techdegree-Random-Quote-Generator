@@ -73,7 +73,7 @@ const getRandomQuote = quotes => getRandomItem(quotes);
 const getRandomColor = colors => getRandomItem(colors);
 
 const printQuote = () => {
-  const randomQuote = getRandomQuote(quotes);
+  let randomQuote = getRandomQuote(quotes);
 
   // Make sure the new quote isn't the same as the old quote
   const currentQuote = document.getElementsByClassName('quote')[0].innerText
