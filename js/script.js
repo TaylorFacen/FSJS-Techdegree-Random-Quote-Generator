@@ -6,11 +6,11 @@ project 1 - A Random Quote Generator
 // Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
 
 // Flag for loop
-var inLoop = true
-var loopInterval = null;
-var buttons = document.getElementsByClassName('button');
+let inLoop = true
+let loopInterval = null;
+const buttons = document.getElementsByClassName('button');
 
-var quotes = [
+const quotes = [
   {
     quote: "While we may not always have control over our options, we always have control over how we choose among them.",
     source: "Greg McKeown",
@@ -48,49 +48,39 @@ var quotes = [
   }
 ]
 
-var tagsMapping = {
+const tagsMapping = {
   "wisdom": "🤔",
   "blackWoman": "👩🏽",
   "book": "📚" 
 }
 
-var colors = [
+const colors = [
   "#50514f",
   "#11091e",
   "#9777ff",
   "#edc9d5"
 ]
 
-function getRandomNumber(ceiling) {
-  var randomNumber = Math.floor(Math.random() * ceiling)
-  return randomNumber
-}
+const getRandomNumber = ceiling => Math.floor(Math.random() * ceiling);
 
-function getRandomItem(array) {
+const getRandomItem = array => {
   var index = getRandomNumber(array.length);
   var item = array[index];
   return item
 }
 
-function getRandomQuote(quotes) {
-  var quote = getRandomItem(quotes)
-  return quote
-}
+const getRandomQuote = quotes => getRandomItem(quotes);
+const getRandomColor = colors => getRandomItem(colors);
 
-function getRandomColor(colors) {
-  var color = getRandomItem(colors)
-  return color
-}
-
-function printQuote() {
-  var randomQuote = getRandomQuote(quotes);
+const printQuote = () => {
+  const randomQuote = getRandomQuote(quotes);
 
   // Make sure the new quote isn't the same as the old quote
-  var currentQuote = document.getElementsByClassName('quote')[0].innerText
+  const currentQuote = document.getElementsByClassName('quote')[0].innerText
   while (randomQuote.quote === currentQuote) {
     randomQuote = getRandomQuote(quotes);
   }
-  var message = "";
+  let message = "";
 
   // build HTML
   message += "<p class = \"quote\">" + randomQuote.quote + "</p>";
@@ -107,8 +97,8 @@ function printQuote() {
   message += "</p>";
 
   if (randomQuote.tags.length > 0) {
-    var tagsHTML = "<p>Tags: ";
-    for (var i = 0; i < randomQuote.tags.length; i++) {
+    let tagsHTML = "<p>Tags: ";
+    for (let i = 0; i < randomQuote.tags.length; i++) {
       tagsHTML += tagsMapping[randomQuote.tags[i]] + " "
     }
     message += tagsHTML + "</p>"
@@ -117,11 +107,11 @@ function printQuote() {
   document.getElementById("quote-box").innerHTML = message;
 
   // Change background color of page and buttons
-  var newBackgroundColor = getRandomColor(colors);
+  const newBackgroundColor = getRandomColor(colors);
 
   document.body.style.backgroundColor = newBackgroundColor;
 
-  for (var i = 0; i < buttons.length; i++) {
+  for (let i = 0; i < buttons.length; i++) {
     buttons[i].style.background = newBackgroundColor;
   }
 
@@ -129,7 +119,7 @@ function printQuote() {
 
 // Function from: https://stackoverflow.com/questions/10935026/how-to-clear-interval-and-set-it-again
 
-function manageLoop() {
+const manageLoop = () => {
   if (inLoop) {
     loopInterval = setInterval(printQuote, 20000)
   } else {
@@ -137,8 +127,8 @@ function manageLoop() {
   }
 }
 
-function switchLoopInterval() {
-  var startStopButton = document.getElementById('startStopLoop');
+const switchLoopInterval = () => {
+  const startStopButton = document.getElementById('startStopLoop');
   inLoop = !inLoop;
   if (inLoop) {
     startStopButton.innerText = "Pause"
